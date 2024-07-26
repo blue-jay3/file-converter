@@ -124,7 +124,7 @@ export default function Home() {
         <TbBrandNextjs className="flex mr-4 my-7 size-8 text-slate-700"/>
         <RiTailwindCssFill className="flex mr-auto my-7 size-8 text-slate-700"/>
 
-        <a target="_blank" href="https://github.com/blue-jay3/file-converter/tree/main/with-tailwindcss-app">
+        <a target="_blank" href="https://github.com/blue-jay3/file-converter/tree/main">
           <FaGithub className="flex ml-auto my-7 mr-7 size-8 cursor-pointer text-slate-700"/>
         </a>
       </div>
