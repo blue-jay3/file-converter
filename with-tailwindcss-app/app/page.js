@@ -5,7 +5,6 @@ import { FFmpeg } from '@ffmpeg/ffmpeg';
 import { fetchFile } from '@ffmpeg/util';
 
 import { FaGithub } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
 
 import { FaReact } from "react-icons/fa";
 import { TbBrandNextjs } from "react-icons/tb";
@@ -126,9 +125,8 @@ export default function Home() {
         <RiTailwindCssFill className="flex mr-auto my-7 size-8 text-slate-700"/>
 
         <a target="_blank" href="https://github.com/blue-jay3/file-converter/tree/main/with-tailwindcss-app">
-          <FaGithub className="flex ml-auto my-7 size-8 cursor-pointer text-slate-700"/>
+          <FaGithub className="flex ml-auto my-7 mr-7 size-8 cursor-pointer text-slate-700"/>
         </a>
-        <FaLinkedin className="flex ml-4 my-7 mr-7 size-8 cursor-pointer text-slate-600"/>
       </div>
 
       <div className="flex justify-center mt-24 px-20">
