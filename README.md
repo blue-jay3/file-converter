@@ -24,8 +24,8 @@ This website allows you to convert images, videos, and audio files to various fo
 
 This website supports the following file types:
 
-### Images: JPEG, JPG, PNG, ICO, GIF, TIFF, WEBP
+**Images:** JPEG, JPG, PNG, ICO, GIF, TIFF, WEBP
 
-### Videos: MP4, M4V, MKV, MOV, WMV, AVI
+**Videos:** MP4, M4V, MKV, MOV, WMV, AVI
 
-### Audio: MP3, AAC, FLAC, WAV, OGG
+**Audio:** MP3, AAC, FLAC, WAV, OGG
