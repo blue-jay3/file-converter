@@ -1,36 +1,31 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# File Converter Website
 
-First, run the development server:
+This website allows you to convert images, videos, and audio files to various formats.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **File Upload:** Upload files via file selection or drag-and-drop.
+- **Format Conversion:** Convert image, video, and audio files to various formats.
+- **Supported File Types:** View a list of supported file types for conversion.
+- **Easy Download:** Download the converted file with a single click.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Frameworks and Libraries Used
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- [React](https://reactjs.org/)
+- [Next.js](https://nextjs.org/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [FFmpeg](https://ffmpeg.org/)
+- [React-icons](https://react-icons.github.io/react-icons/)
+- [Google Poppins Font](https://fonts.google.com/specimen/Poppins)
 
-## Learn More
+## Supported File Types
 
-To learn more about Next.js, take a look at the following resources:
+This website supports the following file types:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Images: JPEG, JPG, PNG, ICO, GIF, TIFF, WEBP
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Videos: MP4, M4V, MKV, MOV, WMV, AVI
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Audio: MP3, AAC, FLAC, WAV, OGG

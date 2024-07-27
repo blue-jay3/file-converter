@@ -1,42 +1,9 @@
 import { useState } from "react"
 
-import FileErrorToast from "../components/fileerrortoast";
-
-const UploadCard = ({inputFile, onFileChange, openFileDialogBox, onFileDrop}) => {
-    const videoFileTypes = [
-        'video/mp4',
-        'video/m4v',
-        'video/mkv',
-        'video/mov',
-        'video/wmv',
-        'video/avi',
-        'video/h264'
-    ]
-    
-    const audioFileTypes = [
-        'audio/mp3',
-        'audio/aac',
-        'audio/flac',
-        'audio/wav',
-        'audio/ogg'
-    ]
-    
-    const imageFileTypes = [
-        'image/jpeg',
-        'image/jpg',
-        'image/svg',
-        'image/png',
-        'image/ico',
-        'image/gif',
-        'image/bmp',
-        'image/tiff',
-        'image/webp',
-    ]
-    
-    const acceptableFileTypes = videoFileTypes.concat(audioFileTypes, imageFileTypes);
+const UploadCard = ({inputFile, onFileChange, openFileDialogBox, onFileDrop, acceptableFileTypes}) => {
 
     const [dragActive, setDragActive] = useState(false);
-    const [show, setShow] = useState(false);
+    const [show, setShow] = useState("");
 
     const handleDragOver = (event) => {
         event.preventDefault();
@@ -62,25 +29,31 @@ const UploadCard = ({inputFile, onFileChange, openFileDialogBox, onFileDrop}) =>
                 if(acceptableFileTypes.includes(file.type)) {
                     onFileDrop(file);
                 } else {
-                    setShow(true);
+                    setShow("Please use a supported file type");
+                    setTimeout(() => {
+                        setShow("");
+                    }, 5000);
                 }
             }
         } else {
-            setShow(true);
+            setShow("Please use a supported file type");
+            setTimeout(() => {
+                setShow("");
+            }, 5000);
         }
     }
 
     return (
         <>
-            <form onDragOver={handleDragOver} onDragLeave={handleDragLeave} onDrop={handleDrop} onClick={openFileDialogBox} className={`flex mt-24 mx-auto h-[150px] w-[500px] cursor-pointer select-none items-center justify-center rounded-lg border border-dashed ${dragActive ? "border-blue-500" : "border-slate-400"} bg-slate-50`}>
-                <input type="file" ref={inputFile} onChange={onFileChange} accept={acceptableFileTypes.join(',')} className="hidden"></input>
-                
-                <p className={`text-lg ${dragActive ? "text-blue-500" : "text-slate-500"}`}>Upload a file</p>
-            </form>
-
-            {show && <FileErrorToast />}
+            <div className="block mt-24 mx-auto w-fit px-5 pt-5 text-center items-center justify-center rounded-lg border border-slate-300 bg-slate-100">
+                <form onDragOver={handleDragOver} onDragLeave={handleDragLeave} onDrop={handleDrop} onClick={openFileDialogBox} className={`flex mx-auto ${show ? "mb-3" : "mb-5"} h-[150px] w-[500px] cursor-pointer select-none items-center justify-center rounded-lg border border-dashed ${dragActive ? "border-blue-500" : "border-slate-400"} bg-slate-50`}>
+                    <input type="file" ref={inputFile} onChange={onFileChange} accept={acceptableFileTypes.join(',')} className="hidden"></input>
+                    
+                    <p className={`text-lg ${dragActive ? "text-blue-500" : "text-slate-500"}`}>Upload a file</p>
+                </form>
+                {show && <p className="text-red-400 mb-3">{show}</p>}
+            </div>
         </>
-
 
     );
 }

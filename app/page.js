@@ -10,6 +10,35 @@ import TitleBanner from "@/components/titlebanner";
 import FileTypesCard from "@/components/filetypescard";
 
 export default function Home() {  
+  const videoFileTypes = [
+      'video/mp4',
+      'video/m4v',
+      'video/mkv',
+      'video/mov',
+      'video/wmv',
+      'video/avi'
+  ]
+
+  const audioFileTypes = [
+      'audio/mp3',
+      'audio/aac',
+      'audio/flac',
+      'audio/wav',
+      'audio/ogg'
+  ]
+
+  const imageFileTypes = [
+      'image/jpeg',
+      'image/jpg',
+      'image/png',
+      'image/ico',
+      'image/gif',
+      'image/tiff',
+      'image/webp'
+  ]
+
+  const acceptableFileTypes = videoFileTypes.concat(audioFileTypes, imageFileTypes);
+
   const [downloadUrl, setDownloadUrl] = useState(null);
   const [filename, setFilename] = useState(null);
 
@@ -19,6 +48,8 @@ export default function Home() {
   const [selectedFileType, setSelectedFileType] = useState("");
 
   const [ffmpeg, setFfmpeg] = useState(null);
+
+  const [show, setShow] = useState("");
 
   useEffect(() => {
     const initializeFFmpeg = async () => {
@@ -34,46 +65,74 @@ export default function Home() {
   };
 
   const onFileChange = async (event) => {
-    if (downloadUrl) {
-      URL.revokeObjectURL(downloadUrl)
-    }
-    if (event.target.files && event.target.files.length > 0) {
-      const file = event.target.files[0];
-      setSelectedFile(file);
-
-      await ffmpeg.writeFile(file.name, await fetchFile(file));
+    try {
+      if (downloadUrl) {
+        URL.revokeObjectURL(downloadUrl)
+      }
+      if (event.target.files && event.target.files.length > 0) {
+        const file = event.target.files[0];
+        setSelectedFile(file);
+  
+        await ffmpeg.writeFile(file.name, await fetchFile(file));
+      }
+    } catch (error) {
+      setShow(error.message);
+      setTimeout(() => {
+          setShow("");
+      }, 5000);
     }
   };
 
   const onFileDrop = async (file) => {
-    if (downloadUrl) {
-      URL.revokeObjectURL(downloadUrl)
-    }
+    try {
+      if (downloadUrl) {
+        URL.revokeObjectURL(downloadUrl)
+      }
 
-    setSelectedFile(file);
-    await ffmpeg.writeFile(file.name, await fetchFile(file));
+      setSelectedFile(file);
+      await ffmpeg.writeFile(file.name, await fetchFile(file));
+    } catch (error) {
+      setShow(error.message);
+      setTimeout(() => {
+          setShow("");
+      }, 5000);
+    }
   };
 
   const onFileTypeChange = async (event) => {
-    if (downloadUrl) {
-      URL.revokeObjectURL(downloadUrl);
-      setDownloadUrl(null)
-    }
-    setSelectedFileType(event.target.value);
-    if (event.target.value != "") {
-      await ffmpeg.exec(['-i', selectedFile.name, selectedFile.name.substr(0, selectedFile.name.lastIndexOf(".")) + "." + event.target.value.split("/")[1].toLowerCase()])
-      convertFile(selectedFile.name.substr(0, selectedFile.name.lastIndexOf(".")) + "." + event.target.value.split("/")[1].toLowerCase(), event.target.value)
-    } else {
-      setFilename(null)
+    try {
+      if (downloadUrl) {
+        URL.revokeObjectURL(downloadUrl);
+        setDownloadUrl(null)
+      }
+      setSelectedFileType(event.target.value);
+      if (event.target.value != "") {
+        await ffmpeg.exec(['-i', selectedFile.name,'-strict','-2', selectedFile.name.substr(0, selectedFile.name.lastIndexOf(".")) + "." + event.target.value.split("/")[1].toLowerCase()])
+        convertFile(selectedFile.name.substr(0, selectedFile.name.lastIndexOf(".")) + "." + event.target.value.split("/")[1].toLowerCase(), event.target.value)
+      } else {
+        setFilename(null)
+      }
+    } catch (error) {
+      setShow(error.message);
+      setTimeout(() => {
+          setShow("");
+      }, 5000);
     }
   }
 
   const convertFile = async (name, type) => {
-    const outputFile = await ffmpeg.readFile(name);
-    const outputBlob = new Blob([outputFile.buffer], { type: type });
-    const url = URL.createObjectURL(outputBlob);
-    setDownloadUrl(url)
-    setFilename(name)
+    try {
+      const outputFile = await ffmpeg.readFile(name);
+      const outputBlob = new Blob([outputFile.buffer], { type: type });
+      const url = URL.createObjectURL(outputBlob);
+      setDownloadUrl(url)
+      setFilename(name)
+    } catch (error) {
+      setShow(error.message);
+      setTimeout(() => {
+          setShow("");
+      }, 5000);
+    }
   }
 
   const clearUpload = () => {
@@ -92,8 +151,8 @@ export default function Home() {
       <TitleBanner />
 
       { (selectedFile && selectedFile.type) ?
-        <FileCard selectedFile={selectedFile} onFileTypeChange={onFileTypeChange} filename={filename} downloadUrl={downloadUrl} selectedFileType={selectedFileType} clearUpload={clearUpload}/> :
-        <UploadCard inputFile={inputFile} onFileChange={onFileChange} openFileDialogBox={openFileDialogBox} onFileDrop={onFileDrop}/>
+        <FileCard selectedFile={selectedFile} onFileTypeChange={onFileTypeChange} filename={filename} downloadUrl={downloadUrl} selectedFileType={selectedFileType} clearUpload={clearUpload} imageFileTypes={imageFileTypes} audioFileTypes={audioFileTypes} videoFileTypes={videoFileTypes} show={show}/> :
+        <UploadCard inputFile={inputFile} onFileChange={onFileChange} openFileDialogBox={openFileDialogBox} onFileDrop={onFileDrop} acceptableFileTypes={acceptableFileTypes}/>
       }
 
       <FileTypesCard />
