@@ -156,6 +156,8 @@ export default function Home() {
       }
 
       <FileTypesCard />
+
+      <p className="text-center mt-auto text-slate-500">This web app uses libraries that are part of the <a target="_blank" href="http://ffmpeg.org" className="text-blue-400 underline">FFmpeg</a> project, licensed under the <a target="_blank" href="http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html" className="text-blue-400 underline">LGPLv2.1</a></p>
     </>
   );
 }
