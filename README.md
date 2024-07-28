@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [create-next-app](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 # File Converter Website
 
@@ -32,21 +32,23 @@ This website supports the following file types:
 
 ## Licenses
 
-- [`caniuse-lite`](https://caniuse.com/): Creative Commons Attribution 4.0 International (CC-BY-4.0)
+Packages and libraries used in this project.
+
+- [caniuse-lite](https://caniuse.com/): CC-BY-4.0
   - License: https://creativecommons.org/licenses/by/4.0/
   - Repository: https://github.com/browserslist/caniuse-lite
-  - Repository Licence File: ./licenses/caniuse-lite_LICENSE.txt
-- [`ffmpeg`](http://ffmpeg.org/): LGPLv2.1
+  - Repository Licence File: [caniuse-lite_LICENSE.txt](./licenses/caniuse-lite_LICENSE.txt)
+- [ffmpeg](http://ffmpeg.org/): LGPLv2.1
   - License: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html
   - Repository: https://github.com/damianociarla/node-ffmpeg
-  - Repository Licence File: ./licenses/ffmpeg_LICENSE.txt
-- [`@ffmpeg/ffmpeg`](https://github.com/ffmpegwasm/ffmpeg.wasm): MIT License
+  - Repository Licence File: [ffmpeg_LICENSE.txt](./licenses/ffmpeg_LICENSE.txt)
+- [@ffmpeg/ffmpeg](https://github.com/ffmpegwasm/ffmpeg.wasm): MIT License
   - License: https://opensource.org/licenses/MIT
   - Repository: https://github.com/ffmpegwasm/ffmpeg.wasm
-  - Repository Licence File: ./licenses/ffmpeg-wasm_LICENSE.txt
-- [`@ffmpeg/util`](https://github.com/ffmpegwasm/ffmpeg.wasm): MIT License
+  - Repository Licence File: [ffmpeg-wasm_LICENSE.txt](./licenses/ffmpeg-wasm_LICENSE.txt)
+- [@ffmpeg/util](https://github.com/ffmpegwasm/ffmpeg.wasm): MIT License
   - License: https://opensource.org/licenses/MIT
   - Repository: https://github.com/ffmpegwasm/ffmpeg.wasm
-  - Repository Licence File: ./licenses/ffmpeg-wasm_LICENSE.txt
+  - Repository Licence File: [ffmpeg-wasm_LICENSE.txt](./licenses/ffmpeg-wasm_LICENSE.txt)
 
 The following list of licenses includes both directly used libraries and those included as part of the default setup or toolchain, such as Next.js. Not all listed libraries are actively used or referenced directly in the project. You can view the full list of licenses by checking the [licenses.json](./licenses.json) file.
