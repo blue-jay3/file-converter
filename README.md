@@ -30,7 +30,7 @@ This website supports the following file types:
 
 **Audio:** MP3, AAC, FLAC, WAV, OGG
 
-## This project includes dependencies with the following licenses
+## Licenses
 
 - [`caniuse-lite`](https://github.com/browserslist/caniuse-lite?tab=CC-BY-4.0-1-ov-file#readme): Creative Commons Attribution 4.0 International (CC-BY-4.0)
   License: https://creativecommons.org/licenses/by/4.0/
